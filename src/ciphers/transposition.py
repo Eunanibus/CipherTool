@@ -36,7 +36,7 @@ class TranspositionCipher():
             else :
                 evenLetters.append(letter)
             counter += 1
-        print( str(self.plaintext).upper() + " has been encoded to " + '' .join(oddLetters+evenLetters).upper())
+        print(str(self.plaintext).upper() + " has been encoded to " + '' .join(oddLetters+evenLetters).upper())
 
     def getAlphaNumeric(self, letter):
         return self.alphabet.index(letter)+1

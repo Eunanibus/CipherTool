@@ -26,7 +26,16 @@ def enterCipherText():
     return input("\nEnter the cipher text you wish to decrypt\n")
 
 def enterKey():
-    return input("\nEnter the Key you'd like to use")
+    return input("\nEnter the Key you'd like to use\n")
+
+def isNumeric(string):
+    return(str.isnumeric(str(string)))
+
+def isAlpha(string):
+    return(str.isalpha(string))
+
+def isAlphaNumeric(string):
+    return(str.isalnum(string))
 
 def taskIsEncrypt():
     userInput = input("Would you like to Encrypt (1) or Decrypt (2)?\n")

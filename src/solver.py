@@ -7,6 +7,7 @@ __status__ = "Development"
 import src.ciphers.caesar as caeser
 import src.ciphers.transposition as transposition
 import src.ciphers.vigenere as vignere
+import src.ciphers.xor as xor
 import src.utilities.utility as util
 
 
@@ -18,13 +19,17 @@ class Solver(object):
         print("Enter 1 for Caeser Cipher\n")
         print("Enter 2 for Vigenere Cipher\n")
         print("Enter 3 for Transposition Cipher\n")
+        print("Enter 4 for XOR Cipher")
         x = input()
         if x == "1" :
             caeser.CaesarCipher()
         elif x == "2":
             vignere.VigenereCipher()
-        else :
+        elif x == "3":
             transposition.TranspositionCipher()
+        else:
+            xor.XOR()
+
 
 
 Solver()
