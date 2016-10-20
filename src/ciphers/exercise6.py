@@ -1,37 +1,33 @@
 import itertools
 from copy import copy, deepcopy
+import src.utilities.utility as util
 
 class Ex:
 
     cipherText = "UOEEOIGOAIVYEYSTFEIHKTMOAOINUCALAEHERDAFLOIHNTWOPWAAHWOOLCAGASYFGEGDCEHEIUORAPNUUIEHRUNXOTWARRMNHCFEWEMOHOAHANEOLOWAKWEFDOENTTWTINETTOCNTFTMHDRNHHTDFSONHLTUOCETLAODILHIBSDAHHRFUAEFETDTIFOTUOEHTTHFLAHIELROELNANMWISOSDWMOOTSCCBOOEENYNEUAEWAOTEHAGTWRTSOTHALEFOOHNNRCITIEUHABNUWSIRRFRAECOCESNEIBOCREOPIVNAMCERFWLNUEHSTEOTHNOHSNSSOWNBLRYFOADAHTMEAEFVBIEEUEFALEETOIHAAAMOHENSIKIHOSKAVYNCTESOTEEICNCRYHEODTWABAKAHCOTTGEBTLLEUOOODDIATHOTMGSASCHRIUSCOOOMSSESBSDIEPLCIEEYVKWBSEMRHRTFRTKKDEITEEEHTALBNTLDCAABAEIFEARNWDYASEROOHLSTIOATINESPDREREHDGIENORCHNOUEFTNGIWEHIAOECENDSPNGRFRNELTNTCSONEFIPFDOTTLUNLPUAANBTBICTEEHOGTERLEIOREKTHTOLTEHAYODOLNRLASLWTRFFIOLLPFHONCTEEIUCNILENEUNEGFDTLNHCINBATWLGHEIANDTHTGRGHAHEFRANTHEUHRATNOHEOLSIHRNSYOEFIOPPCSPFHPENTEAAUSTEUEOHOOHECARTBNVAEAVRESHEWODTICXTESFOTSBANKSETLEISETUNHNTSEPNVSOAEATTLGNOEEFOPWAHYSNEMERWVSEF"
-    columns = 4
+    columns = 6
     rows = int
 
     def Solve(self):
+
+        print("Initiating...")
+
+        #Gets everything into a 2D Array
         rows = int(len(self.cipherText)/self.columns)
         if(len(self.cipherText)%self.columns > 0): rows += 1
-
         layers = [["" for x in range(self.columns)] for y in range(rows)]
-
         for letter in range(len(self.cipherText)):
-
             layers[int(letter/self.columns)][int(letter%self.columns)] = self.cipherText[letter]
 
-        for row in range(rows):
-            print(layers[row])
-
+        # Iterates for the possible combinations of columns
         for combination in set(itertools.permutations(list(range(self.columns)))):
-            sample = deepcopy(layers)
             newAnswer = deepcopy(layers)
 
-
-            for column in range(self.columns):
-                for row in range(rows):
-                    newAnswer[row][column] = sample[row][combination[column]]
-
-            print("\n\nCombination: " + str(combination) + "\n")
+            answer = ""
             for row in range(rows):
-                print(newAnswer[row])
-
-
-
+                for column in range(len(newAnswer[row])):
+                    answer += newAnswer[row][combination[column]]
+            print(answer)
+            if answer in str(util.getOriginalText()):
+                print("\nCombination Found: " + str(combination) + "\n")
+                print(answer)
