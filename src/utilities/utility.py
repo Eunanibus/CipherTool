@@ -4,6 +4,8 @@ __version__ = "1.0"
 __email__ = "ec368@kent.ac.uk"
 __status__ = "Development"
 
+import string
+
 def titleMessage(title):
     barsMessage(title)
 
@@ -43,3 +45,6 @@ def taskIsEncrypt():
         return True
     else:
         return False
+
+def alphabet():
+    return list(string.ascii_lowercase)

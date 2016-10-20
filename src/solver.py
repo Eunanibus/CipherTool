@@ -9,6 +9,8 @@ import src.ciphers.transposition as transposition
 import src.ciphers.vigenere as vignere
 import src.ciphers.xor as xor
 import src.utilities.utility as util
+import src.ciphers.test as test
+import src.ciphers.exercise6 as Ex6
 
 
 class Solver(object):
@@ -32,4 +34,4 @@ class Solver(object):
 
 
 
-Solver()
+Ex6.Ex().Solve()

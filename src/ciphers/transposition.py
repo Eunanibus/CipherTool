@@ -11,8 +11,6 @@ import src.utilities.utility as util
 
 class TranspositionCipher():
 
-    alphabet =  ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
-                "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     keyKnown = bool
     key = str
     ciphertext = str
@@ -39,7 +37,7 @@ class TranspositionCipher():
         print(str(self.plaintext).upper() + " has been encoded to " + '' .join(oddLetters+evenLetters).upper())
 
     def getAlphaNumeric(self, letter):
-        return self.alphabet.index(letter)+1
+        return util.alphabet().index(letter)+1
 
     def complexEncrypt(self):
 

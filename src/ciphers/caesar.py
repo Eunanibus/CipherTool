@@ -8,8 +8,6 @@ import src.utilities.utility as util
 
 class CaesarCipher():
 
-    alphabet =  ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
-                "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     key = int
     originaltext = str
     plaintext = str
@@ -23,11 +21,11 @@ class CaesarCipher():
         self.ciphertext = util.enterCipherText()
         self.key = 1
 
-        while(self.key < len(self.alphabet)):
+        while(self.key < len(util.alphabet())):
                 decryptedLine = list()
                 for letter in self.ciphertext.lower():
                     if(letter != " "):
-                        decryptedLine.append(self.alphabet[self.getNextIndex(letter)])
+                        decryptedLine.append(util.alphabet()[self.getNextIndex(letter)])
                     else:
                         decryptedLine.append(" ")
 
@@ -50,15 +48,15 @@ class CaesarCipher():
         self.ciphertext = ""
         for letter in self.plaintext:
             if(not letter == " "):
-                self.ciphertext += self.alphabet[self.getNextIndex(letter)]
+                self.ciphertext += util.alphabet()[self.getNextIndex(letter)]
             else:
                 self.ciphertext += " "
         util.regularMessage("'" + str(self.originaltext).upper() + "' has been encoded as: " + str(self.ciphertext).upper() + "\nWith the Key: " + str(self.key))
 
     def getNextIndex(self, letter):
-        nextIndex = self.alphabet.index(letter) - int(self.key)
+        nextIndex = util.alphabet().index(letter) - int(self.key)
         if (nextIndex < 0):
-            nextIndex = len(self.alphabet) + (self.alphabet.index(letter) - int(self.key))
+            nextIndex = len(util.alphabet()) + (util.alphabet().index(letter) - int(self.key))
         return nextIndex
 
 
